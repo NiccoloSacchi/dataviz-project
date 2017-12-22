@@ -1,0 +1,189 @@
+/* table for selecting the categories */
+.categories_table {
+    /*margin: auto;*/
+    /*margin: 20px 0px;*/
+	font-size: 13px;
+	height: 100%;
+}
+
+#categoryColumn {
+	float: left;
+	width: 20%;
+	height: calc(100% - 40px);
+	background: #eee;
+	margin: 20px;
+	border-radius: 6px;
+}
+
+#categoryColumn ul {
+	margin: 0;
+	padding-left: 20px;
+}
+
+#categoryColumn ul li {
+	list-style-type: none;
+	position: relative;
+	width: 6px;
+	padding-bottom: 50px;
+	background: #337ab7;
+}
+
+#categoryColumn ul li span {
+	padding-left: 30px;
+	display: block;
+	width: 200px;
+}
+ 
+#categoryColumn ul li::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: inherit;
+}
+
+#categoryGraphColumn {
+	float: left;
+	width: calc(80% - 40px);
+	height: 100%;
+}
+
+#categoryGraphColumn .catHeader, #categoryColumn .catHeader {
+	height: 100px;
+	text-align: center;
+}
+
+.catHeader h1 {
+	margin: 0 !important;
+	padding: 15px;
+}
+
+#wrapper {
+	height: calc(100% - 47px);
+	vertical-align: top;
+}
+
+.categories_table .row:nth-child(2){
+    background: linear-gradient(to bottom, #ede9ce, #d3c193)
+}
+
+.categories_table .row:nth-child(2) .column:first-child{
+    width: 150px !important;
+}
+
+.categories_table .row:nth-child(2) .column:last-child{
+    width: calc(100% - 150px);
+}
+
+.header{
+    /* titles */
+    text-align: center;
+    font-weight: 600;
+    padding: 5px 0px;
+    font-size: 16px;
+}
+
+.categoryList{
+    margin: 5px 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/*.categories_table .row .column:first-child{*/
+    /*vertical-align: text-top;*/
+    /*font-weight: 600;*/
+/*}*/
+
+/*.categories_table .row:nth-child(3) .column:first-child p{*/
+    /*margin: 7px 0;*/
+/*}*/
+
+/* category graph */
+
+#categoryGraphColumn .svgContainer {
+	height: calc(100% - 100px);
+	width: 100%;
+	overflow-y: hidden;
+}
+
+.categories_graph{
+    width: 100%;
+	height: 100%;
+	transform-origin: 50%;
+}
+
+.categories_graph .node {
+    cursor: pointer;
+}
+
+/*.categories_graph .node circle {*/
+    /*!*fill: #fff;*!*/
+    /*!*stroke: #64706c;*!*/
+    /*stroke-width: 1.5px;*/
+/*}*/
+
+.categories_graph g.node circle{
+    stroke: #64706c;
+    stroke-width: 1px;
+}
+
+.categories_graph g.leaf circle{
+    /*fill: #935347;!*radial-gradient(circle at center, #7c8c87, #64706c);*!*/
+    /*stroke: #64706c;*/
+
+}
+
+.categories_graph g.ancestors circle{
+    /*fill: #fff;*/
+    /*fill: #b19a79; !* radial-gradient(circle at center, #935347, #935347);*!*/
+    /*stroke-width: 1.5px;*/
+}
+
+.categories_graph g.expanded circle{
+    /*fill: #fff;*/
+    /*stroke-width: 2px;*/
+}
+
+
+.categories_graph g.node text {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    display: block;
+    width: 50px;
+}
+
+.categories_graph g.node text.root_node {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.categories_graph g.leaf text{
+    fill: rgb(36, 174, 36);
+    font-size: 18px;
+}
+
+.categories_graph .link {
+    fill: none;
+    stroke: #64706c;
+    stroke-width: 1px;
+}
+
+/* tooltip */
+div.tooltip {
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 5px 15px;
+    font: 14px sans-serif;
+    background: #a8de9c;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 999;
+}

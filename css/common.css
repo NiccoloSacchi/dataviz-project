@@ -1,0 +1,30 @@
+body,
+html{
+    width: 100%;
+    height: 100%;
+}
+
+.table {
+    display: table;
+    margin: 0px;
+    padding: 0px;
+    clear:both;
+}
+
+.table .row {
+    display: table-row;
+    margin: 0px;
+    padding: 0px;
+    clear:both;
+}
+
+.table .row .column {
+    float:left;
+    display: table-cell;
+    margin: 0px;
+    padding: 0px;
+}
+
+.table .row .column:first-child{
+    width:auto;
+}

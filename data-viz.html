@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- Theme by Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<title>Amazon - product graph</title>
+
+<link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-social.css">
+	<link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/products-graph.css">
+    <link rel="stylesheet" href="css/categories-graph.css">
+    <link rel="stylesheet" href="css/search-tool.css">
+
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/auto-complete.min.js"></script>
+</head>
+<body
+        style="text-align: justify; /* overflow-x: hidden; */"
+>
+
+	<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand">Data Visualization Project - EPFL</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="main-navbar">
+                <ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Code</a></li>
+					<li><a href="#">Process Book</a></li>
+					<li><a href="#">Screencast</a></li>
+                </ul>
+            </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a onclick="window.open(document.getElementById('datavis_logo').getAttribute('src'))">
+                        <img id="datavis_logo" class="avatar-img" src="img/logo_2.jpg">
+                    </a>
+                </div>
+			</div>
+		</div>
+	</nav>
+
+    <header class="header-section ">
+        <div class="intro-header no-img">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="page-heading">
+                            <h1>Amazon <br> product navigator</h1>
+                            <hr class="small">
+                            <span class="page-subheading">Compare products in an easy and intuitive way</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" role="main">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="main-explain-area jumbotron">
+                    <div class="get-started-wrap" style="text-align: center; margin-top: 25px;">
+                        <a class="btn btn-success btn-lg get-started-btn" href="products.html">Try it out!</a>
+                    </div>
+					<h2 class="post-subtitle">
+					What is our platform about?
+					</h2>
+                    <p>
+					Buying from huge e-commerce websites such as Amazon has many advantages, but paradoxically, users are often confused by the vast variety of products that are offered. 
+					Users may have a rough idea about the characteristics of the product they want to buy, but they often undergo the same process of comparing similar items. 
+					We aim to remove this redundancy and aid them in their purchases, suggesting the best or most popular products that correspond to their search. 
+					For instance, comparing smartphones or laptops may be difficult due to the wide price range and the required technical knowledge. 
+					With our platform, users can easily search in a graphical way the most popular products that match their needs.
+                    </p>
+					<h2 class="post-subtitle">
+					Why is our solution effective?
+					</h2>
+					<p> 
+					When you look at a <a href="https://www.amazon.com/Acer-E5-575-33BM-15-6-Inch-Notebook-Generation/dp/B01K1IO3QW/ref=sr_1_3?s=pc&ie=UTF8&qid=1512207600&sr=1-3&keywords=laptop">product on Amazon</a>, 
+					you may notice a small window at the bottom of the page that indicates what <i> other </i> products users usually buy instead.
+					We call it a <i> competition </i> relation. What do we do is just to build a network of these relations among all products for each category.
+					If a product is associated with many of these relations, it means that users have preferred it many times over the others.
+					This new way of defining popular products allows us to group them according to human-made criteria: the brand, the price or some peculiar
+					characteristics. But <i> how </i> is decided by humans, not algorithms. Just like you.
+					<h2 class="post-subtitle">
+					Who should use our platform?
+					</h2>
+					<p>
+					With our platform we want to aid both customers and vendors. 
+					Customers may take advantage of previous people's choices to decide what product is worth buying, or to get an idea about alternative items. 
+					Vendors may explore the visualization to search competitors and see the characteristics of the most popular items in their category. 
+                    </p>
+                </div>
+
+                <!--<div id="search-tool" style="width: 100%"></div>-->
+                <div class="posts-list">
+                    <article class="post-preview">
+                        <h2 class="post-title">How to use it:</h2>
+						<h3 class="post-subtitle">
+							Choose a category
+                        </h3>
+                        <div class="post-entry">
+							<img src="img/home/category_graph.png" alt="" />
+							Categories are represented as a hierarchy, and you can click on the dots to navigate through it. 
+							You can also directly type on the search bar the category that you are looking for.
+							On the left, the timeline shows your current category, and it allows you to undo your steps.
+							Green dots indicate that you have reached the end of the hierarchy, and by clicking on them, you can jump into the
+							product network of that category.
+                        </div>
+                        <!--<div id="categories_graph"></div>-->
+                    </article>
+                    
+                    <article class="post-preview">
+                        <h3 class="post-subtitle">
+                            Explore the network
+                        </h3>
+                        <div class="post-entry">
+							<img src="img/home/products_graph.png" alt="" />
+							Now you are inside a category, where you can see a large network of coloured dots.
+							They represent products, and they are connected together according to customers' shopping trends.
+							If an arrow points from a dot to another, it means that users usually buy the second after viewing the first.
+							You can also notice some stars, which are pointed by many arrows. Those are products that have been chosen
+							several times over the others by customers. In simpler words, they are the most popular products in category.
+							Finally, you may wonder what the colours represent. They show the price of the product. 
+							Cheaper products are shown as green, while more expensive products are shown as red. With all the shades in between, of course.
+                        </div>
+                        <!--<div id="product_graph" style="margin-top: 20px; width: 800px"></div>-->
+                    </article>
+					
+					<article class="post-preview">
+                        <h3 class="post-subtitle">
+                            Competing products
+                        </h3>
+                        <div class="post-entry">
+							<img src="img/home/cliques.png" alt="" />
+							Some products are surrounded by a coloured halo. We call them <i> competing products</i>.
+							If you look closely, they are groups in which each product points to and is pointed by the others.
+							These items have very similar characteristics, and not necessarily one is better than the others. 
+							The choice is up to you!
+                        </div>
+                        <!--<div id="product_graph" style="margin-top: 20px; width: 800px"></div>-->
+                    </article>
+					
+					<article class="post-preview">
+                        <h3 class="post-subtitle">
+                            Searching
+                        </h3>
+                        <div class="post-entry">
+							<img src="img/home/slider.png" alt="" />
+							Of course you are not required to navigate through the network to search your product. 
+							You can use the search bar on the top of the page to filter the network according to some keywords.
+							You can also use the slider on the bottom of the page to filter the products according to a price range.
+                        </div>
+                        <!--<div id="product_graph" style="margin-top: 20px; width: 800px"></div>-->
+                    </article>
+					
+					<article class="post-preview">
+                        <h3 class="post-subtitle">
+                            Recommendations
+                        </h3>
+                        <div class="post-entry">
+							By clicking on the button <i> Recommendations</i>, you can immediately see the most popular products in category, and if any,
+							their competitors.
+							If you click on the picture, the product is zoomed and highlighted on the network.
+                        </div>
+                        <!--<div id="product_graph" style="margin-top: 20px; width: 800px"></div>-->
+                    </article>
+					
+                    <!-- setting the margin so to go beyond the width of the parent -->
+                    <!--<div id="product_graph" style="width: 120%; margin-left: -10%;"></div>-->
+					<div style="text-align:center; margin-top: 10px;">
+							<a class="btn btn-success btn-lg get-started-btn" href="products.html">Try it out!</a>
+                        <!--<div id="product_graph" style="margin-top: 20px; width: 800px"></div>-->
+                    </div>
+					
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+	<footer>
+		<div class="container beautiful-jekyll-footer">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<ul class="list-inline text-center footer-links">
+					</ul>
+					<p class="copyright text-muted">
+                        Dario Pavllo - Niccolò Sacchi - Mattia Martinelli
+						&nbsp;•&nbsp;
+						2017
+						&nbsp;•&nbsp;
+					</p>
+					<!-- Please don't remove this, keep my open source work credited :) -->
+					<p class="theme-by text-muted">
+                        Theme by
+                        <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+	<script>
+		if (typeof jQuery == 'undefined') {
+			document.write('<script src="js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+		}
+	</script><script src="js/jquery-1.11.2.min.js"></script>
+
+	 <!--doing something a bit funky here because I want to be careful not to include JQuery twice!-->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+	<script src="js/main.js"></script>
+
+</body>
